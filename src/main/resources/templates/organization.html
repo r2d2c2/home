@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">조직도</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1>조직도</h1>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">홈</a> <span>&gt;</span> <span>회사소개</span> <span>&gt;</span> <span>조직도</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="content-header">
+                    <h2>조직도</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="org-chart">
+                    <div class="org-level org-top">
+                        <div class="org-box ceo">
+                            <span class="org-title">대표이사</span>
+                            <span class="org-name">김경철</span>
+                        </div>
+                    </div>
+                    <div class="org-connector"></div>
+                    <div class="org-level">
+                        <div class="org-box">
+                            <span class="org-title">관리부</span>
+                        </div>
+                        <div class="org-box">
+                            <span class="org-title">경영지원부</span>
+                        </div>
+                        <div class="org-box">
+                            <span class="org-title">시설관리부</span>
+                        </div>
+                    </div>
+                    <div class="org-connector"></div>
+                    <div class="org-level">
+                        <div class="org-box sub">
+                            <span class="org-title">회계</span>
+                        </div>
+                        <div class="org-box sub">
+                            <span class="org-title">총무/인사</span>
+                        </div>
+                        <div class="org-box sub">
+                            <span class="org-title">시설/설비</span>
+                        </div>
+                        <div class="org-box sub">
+                            <span class="org-title">전기/소방</span>
+                        </div>
+                        <div class="org-box sub">
+                            <span class="org-title">환경/위생</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">진행절차</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1>진행절차</h1>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">홈</a> <span>&gt;</span> <span>진행절차</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="content-header">
+                    <h2>진행절차</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">STEP 01</div>
+                        <div class="step-icon"><i class="fas fa-file-invoice"></i></div>
+                        <h3>견적문의</h3>
+                        <p>실무경험이 있는 전문인력이 현장에 방문하여 의뢰받은 건물의 특성, 의뢰인의 조건들을 토대로 견적서를 작성합니다.</p>
+                    </div>
+                    <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+                    <div class="process-step">
+                        <div class="step-number">STEP 02</div>
+                        <div class="step-icon"><i class="fas fa-file-signature"></i></div>
+                        <h3>계약서 작성</h3>
+                        <p>해당 현장에 필요한 법정기준 및 의뢰인의 요구사항을 반영한 계약서를 작성합니다.</p>
+                    </div>
+                    <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+                    <div class="process-step">
+                        <div class="step-number">STEP 03</div>
+                        <div class="step-icon"><i class="fas fa-tasks"></i></div>
+                        <h3>관리진행</h3>
+                        <p>(주)제주종합관리만의 노하우와 전문인력파견 등을 통해 건물종합관리의 최상의 서비스를 제공합니다.</p>
+                    </div>
+                    <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+                    <div class="process-step">
+                        <div class="step-number">STEP 04</div>
+                        <div class="step-icon"><i class="fas fa-smile-beam"></i></div>
+                        <h3>최상의 만족도</h3>
+                        <p>관리를 하면서 발생 되는 의견들을 반영하여 관계인들에게 편리함과 큰 만족을 선사합니다.</p>
+                    </div>
+                </div>
+
+                <div class="process-cta">
+                    <p>건물종합관리에 관한 문의사항이 있으시면 언제든지 연락 주세요.</p>
+                    <div class="process-cta-buttons">
+                        <a href="tel:15332849" class="btn-primary"><i class="fas fa-phone-alt"></i> 1533-2849</a>
+                        <a th:href="@{/contact}" class="btn-outline">견적 문의하기</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

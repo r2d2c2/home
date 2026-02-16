@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">사업소개</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1>사업소개</h1>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">홈</a> <span>&gt;</span> <span>사업소개</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="content-header">
+                    <h2>토탈 매니지먼트</h2>
+                    <div class="header-line"></div>
+                    <p class="content-subtitle">건물종합관리, 입주관리, 임대관리, 시설관리, 인력파견 등 토탈 매니지먼트 서비스를 제공합니다.</p>
+                </div>
+
+                <!-- Building Management -->
+                <div class="business-detail" id="building">
+                    <div class="detail-header">
+                        <div class="detail-icon"><i class="fas fa-building"></i></div>
+                        <h3>건물종합관리</h3>
+                    </div>
+                    <div class="detail-content">
+                        <p>공동주택(아파트, 연립, 다세대) 위탁관리로 법적기준을 충족하는 관리인원 배치와 함께 회계, 행정, 시설 등의 통합 관리 서비스를 제공합니다.</p>
+                        <ul class="detail-list">
+                            <li><i class="fas fa-check"></i> 법적기준을 충족하는 전문 관리인원 배치</li>
+                            <li><i class="fas fa-check"></i> 관리규약, 장기수선계획 등 법률자문</li>
+                            <li><i class="fas fa-check"></i> 관리주체 및 입주자대표회의 행정업무 대행</li>
+                            <li><i class="fas fa-check"></i> 입주민 분쟁 조정</li>
+                            <li><i class="fas fa-check"></i> 하자보수보증금 관련 법률대행</li>
+                            <li><i class="fas fa-check"></i> 시설물 점검 및 유지보수 관리</li>
+                            <li><i class="fas fa-check"></i> 화재 및 수해 보험 관리</li>
+                            <li><i class="fas fa-check"></i> 관리비 부과, 정산, 미수금 관리 등 회계업무</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Facility Management -->
+                <div class="business-detail" id="facility">
+                    <div class="detail-header">
+                        <div class="detail-icon"><i class="fas fa-cogs"></i></div>
+                        <h3>시설관리</h3>
+                    </div>
+                    <div class="detail-content">
+                        <p>건물의 시설물을 체계적으로 관리하여 최상의 상태를 유지합니다.</p>
+                        <ul class="detail-list">
+                            <li><i class="fas fa-check"></i> 계절별 소독 및 방역</li>
+                            <li><i class="fas fa-check"></i> 연중 조경관리 (제초, 예초작업)</li>
+                            <li><i class="fas fa-check"></i> 전문업체와의 제휴를 통한 승강기 유지보수</li>
+                            <li><i class="fas fa-check"></i> 소방안전관리자 선임 및 소방관리</li>
+                            <li><i class="fas fa-check"></i> 24시간 비상대기 서비스</li>
+                            <li><i class="fas fa-check"></i> 저수조 청소(연2회 법정) 및 수질검사</li>
+                            <li><i class="fas fa-check"></i> 건물위생관리 및 미화원 파견</li>
+                            <li><i class="fas fa-check"></i> 전기안전관리자 선임 및 전기관리</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Move-in Management -->
+                <div class="business-detail" id="movein">
+                    <div class="detail-header">
+                        <div class="detail-icon"><i class="fas fa-truck-moving"></i></div>
+                        <h3>입주관리</h3>
+                    </div>
+                    <div class="detail-content">
+                        <p>신규 입주 건물의 체계적인 입주관리 서비스를 제공합니다.</p>
+                        <ul class="detail-list">
+                            <li><i class="fas fa-check"></i> 입주전략 수립 및 단계별 스케줄 작성</li>
+                            <li><i class="fas fa-check"></i> 계약자 성향 파악 및 입주율 예측</li>
+                            <li><i class="fas fa-check"></i> 계약자 안내 및 고지 업무</li>
+                            <li><i class="fas fa-check"></i> 잔금 납부 협조 (은행 제휴)</li>
+                            <li><i class="fas fa-check"></i> 관리사무소 인수인계 및 계약 체결</li>
+                            <li><i class="fas fa-check"></i> 입주 서류 관리 및 열쇠 불출</li>
+                            <li><i class="fas fa-check"></i> 세대 점검 및 비품 검수</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Rental Management -->
+                <div class="business-detail" id="rental">
+                    <div class="detail-header">
+                        <div class="detail-icon"><i class="fas fa-handshake"></i></div>
+                        <h3>임대관리</h3>
+                    </div>
+                    <div class="detail-content">
+                        <p>건물주의 임대 수익을 극대화하고 입주자의 만족을 위한 전문 임대관리 서비스를 제공합니다.</p>
+                        <ul class="detail-list">
+                            <li><i class="fas fa-check"></i> 임대차 계약 관리</li>
+                            <li><i class="fas fa-check"></i> 임대료 수납 및 미수금 관리</li>
+                            <li><i class="fas fa-check"></i> 공실 관리 및 임차인 모집</li>
+                            <li><i class="fas fa-check"></i> 시설 유지보수 관리</li>
+                            <li><i class="fas fa-check"></i> 입퇴실 관리</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

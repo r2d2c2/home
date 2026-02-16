@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<footer th:fragment="footer" class="site-footer">
+    <div class="footer-main">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-logo">(주)제주종합관리</h3>
+                    <p class="footer-desc">건물종합관리 전문기업으로서 최상의 서비스를 제공합니다.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">본사</h4>
+                    <ul class="footer-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 제주특별자치도 서귀포시 대정읍 신영로 5, 101</li>
+                        <li><i class="fas fa-phone-alt"></i> 1533-2849 / 064-792-6670</li>
+                        <li><i class="fas fa-fax"></i> 064-792-6671</li>
+                        <li><i class="fas fa-envelope"></i> jtm6670@naver.com</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">경기사무소</h4>
+                    <ul class="footer-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 경기도 하남시 상산곡동 502-8</li>
+                        <li><i class="fas fa-phone-alt"></i> 031-764-9067</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">바로가기</h4>
+                    <ul class="footer-links">
+                        <li><a th:href="@{/company}">회사소개</a></li>
+                        <li><a th:href="@{/business}">사업소개</a></li>
+                        <li><a th:href="@{/projects}">주요실적</a></li>
+                        <li><a th:href="@{/process}">진행절차</a></li>
+                        <li><a th:href="@{/contact}">문의하기</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-inner">
+                <p>Copyright &copy; 2024 (주)제주종합관리. All Rights Reserved. | 대표: 김경철 | 사업자등록번호: 751-81-01372</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Bar -->
+    <div class="mobile-bottom-bar">
+        <a href="tel:15332849" class="mobile-bar-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>전화</span>
+        </a>
+        <a href="#" class="mobile-bar-item">
+            <i class="fas fa-comment-dots"></i>
+            <span>카카오톡</span>
+        </a>
+        <a th:href="@{/contact}" class="mobile-bar-item">
+            <i class="fas fa-file-alt"></i>
+            <span>견적문의</span>
+        </a>
+        <a href="#" class="mobile-bar-item">
+            <i class="fab fa-youtube"></i>
+            <span>유튜브</span>
+        </a>
+    </div>
+</footer>
+</body>
+</html>

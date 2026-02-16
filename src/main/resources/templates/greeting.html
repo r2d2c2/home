@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">인사말</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1>인사말</h1>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">홈</a> <span>&gt;</span> <span>회사소개</span> <span>&gt;</span> <span>인사말</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="content-header">
+                    <h2>인사말</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="greeting-content">
+                    <div class="greeting-text">
+                        <p class="greeting-highlight">
+                            "감동을 고객에게, 긍지를 사원에게, 가치를 사회에"
+                        </p>
+                        <p>안녕하십니까.<br>(주)제주종합관리 대표이사 김경철입니다.</p>
+                        <p>저희 (주)제주종합관리는 건물종합관리 전문기업으로서 공동주택 및 빌딩 관리, 시설관리, 입주관리, 임대관리 등 토탈 매니지먼트 서비스를 제공하고 있습니다.</p>
+                        <p>풍부한 실무 경험과 전문 인력을 바탕으로 고객의 소중한 자산을 최상의 상태로 관리하며, 입주민의 편리하고 쾌적한 생활환경을 조성하기 위해 최선을 다하고 있습니다.</p>
+                        <p>앞으로도 고객 여러분의 기대에 부응하는 최상의 서비스를 제공할 수 있도록 끊임없이 노력하겠습니다.</p>
+                        <p>감사합니다.</p>
+                        <p class="greeting-sign">
+                            <strong>(주)제주종합관리 대표이사 김경철</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">회사소개</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main>
+        <!-- Page Banner -->
+        <section class="page-banner">
+            <div class="container">
+                <h1>회사소개</h1>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">홈</a> <span>&gt;</span> <span>회사소개</span> <span>&gt;</span> <span>회사개요</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Overview -->
+        <section class="page-content">
+            <div class="container">
+                <div class="content-header">
+                    <h2>회사개요</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="company-overview">
+                    <!-- Company Philosophy -->
+                    <div class="philosophy-section">
+                        <div class="philosophy-cards">
+                            <div class="philosophy-card">
+                                <div class="phil-icon"><i class="fas fa-heart"></i></div>
+                                <h3>감동을 고객에게</h3>
+                            </div>
+                            <div class="philosophy-card">
+                                <div class="phil-icon"><i class="fas fa-star"></i></div>
+                                <h3>긍지를 사원에게</h3>
+                            </div>
+                            <div class="philosophy-card">
+                                <div class="phil-icon"><i class="fas fa-gem"></i></div>
+                                <h3>가치를 사회에</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Info Table -->
+                    <div class="info-table-wrap">
+                        <table class="info-table">
+                            <tbody>
+                                <tr>
+                                    <th>회사명</th>
+                                    <td>(주)제주종합관리</td>
+                                </tr>
+                                <tr>
+                                    <th>대표이사</th>
+                                    <td>김경철</td>
+                                </tr>
+                                <tr>
+                                    <th>본사</th>
+                                    <td>제주특별자치도 서귀포시 대정읍 신영로 5, 101</td>
+                                </tr>
+                                <tr>
+                                    <th>경기사무소</th>
+                                    <td>경기도 하남시 상산곡동 502-8</td>
+                                </tr>
+                                <tr>
+                                    <th>대표전화</th>
+                                    <td>1533-2849 / 064-792-6670</td>
+                                </tr>
+                                <tr>
+                                    <th>팩스</th>
+                                    <td>064-792-6671</td>
+                                </tr>
+                                <tr>
+                                    <th>이메일</th>
+                                    <td>jtm6670@naver.com</td>
+                                </tr>
+                                <tr>
+                                    <th>사업자등록번호</th>
+                                    <td>751-81-01372</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Business Areas -->
+                    <div class="business-areas">
+                        <h3>사업분야</h3>
+                        <div class="area-list">
+                            <div class="area-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>건물시설관리업</span>
+                            </div>
+                            <div class="area-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>공동주택 및 빌딩 관리업</span>
+                            </div>
+                            <div class="area-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>입주 및 임대관리</span>
+                            </div>
+                            <div class="area-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>건물위생관리 및 소독업</span>
+                            </div>
+                            <div class="area-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>청소업 및 저수조 청소업</span>
+                            </div>
+                            <div class="area-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>경비파견업 및 인력파견업</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Licenses -->
+                    <div class="licenses-section">
+                        <h3>등록 및 면허</h3>
+                        <div class="license-list">
+                            <div class="license-item">
+                                <span class="license-label">주택관리업</span>
+                                <span class="license-value">서귀포시 제2018-2호</span>
+                            </div>
+                            <div class="license-item">
+                                <span class="license-label">저수조청소업</span>
+                                <span class="license-value">제주도 제54호</span>
+                            </div>
+                            <div class="license-item">
+                                <span class="license-label">소독업</span>
+                                <span class="license-value">서귀포시 제2020-6520076-00001호</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

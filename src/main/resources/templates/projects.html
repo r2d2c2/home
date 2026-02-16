@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">주요실적</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1>주요실적</h1>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">홈</a> <span>&gt;</span> <span>주요실적</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="content-header">
+                    <h2>주요실적</h2>
+                    <div class="header-line"></div>
+                    <p class="content-subtitle">제주도 전역 50여개 현장의 관리 실적을 보유하고 있습니다.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>제주곶자왈아이파크</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> 제주시 한경면</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>제주국제학교 아이비스127</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> 제주시 청수리</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>애월코지빌</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> 제주시 애월읍</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>라모인빌리지</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> 서귀포시 안덕면</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>마크힐애월</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> 제주시 애월읍</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>유피테르</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> 서귀포시 강정동</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>더그라벨</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> 제주 대정읍</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>유수암더힐</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> 제주시 애월읍</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

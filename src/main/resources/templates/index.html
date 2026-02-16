@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">(주)제주종합관리</title>
+    <meta name="description" content="제주도 건물관리, 공동주택관리, 저수조 청소, 바퀴벌레 소독, 관리비고지서 대행, 전기 소방 안전대행 전문기업">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main>
+        <!-- Hero Slider -->
+        <section class="hero-slider">
+            <div class="slider-container" id="heroSlider">
+                <div class="slide active" style="background: linear-gradient(135deg, #046bd2 0%, #0288d1 50%, #26c6da 100%);">
+                    <div class="slide-content">
+                        <h1>건물종합관리 전문기업</h1>
+                        <p>(주)제주종합관리는 고객의 소중한 자산을<br>최상의 서비스로 관리합니다.</p>
+                        <a th:href="@{/company}" class="btn-hero">회사소개 보기</a>
+                    </div>
+                </div>
+                <div class="slide" style="background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #046bd2 100%);">
+                    <div class="slide-content">
+                        <h1>제주도 50여개 현장 관리</h1>
+                        <p>풍부한 경험과 전문인력으로<br>신뢰받는 관리서비스를 제공합니다.</p>
+                        <a th:href="@{/projects}" class="btn-hero">주요실적 보기</a>
+                    </div>
+                </div>
+                <div class="slide" style="background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #42a5f5 100%);">
+                    <div class="slide-content">
+                        <h1>시설관리 &middot; 입주관리 &middot; 임대관리</h1>
+                        <p>체계적인 관리 시스템으로<br>편리함과 큰 만족을 선사합니다.</p>
+                        <a th:href="@{/business}" class="btn-hero">사업소개 보기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev" id="sliderPrev"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="slider-dots" id="sliderDots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
+        </section>
+
+        <!-- Service Cards Section -->
+        <section class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>주요 서비스</h2>
+                    <p>고객의 소중한 자산을 전문적으로 관리합니다</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>회사소개</h3>
+                        <p>건물종합관리 전문기업 (주)제주종합관리를 소개합니다.</p>
+                        <a th:href="@{/company}" class="read-more">Read More &raquo;</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>사업소개</h3>
+                        <p>건물종합관리, 시설관리, 입주관리, 임대관리 서비스를 제공합니다.</p>
+                        <a th:href="@{/business}" class="read-more">Read More &raquo;</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>주요실적</h3>
+                        <p>제주도 전역 50여개 현장의 관리 실적을 보유하고 있습니다.</p>
+                        <a th:href="@{/projects}" class="read-more">Read More &raquo;</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>진행절차</h3>
+                        <p>견적문의부터 최상의 만족도까지 체계적인 절차로 진행합니다.</p>
+                        <a th:href="@{/process}" class="read-more">Read More &raquo;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h2>감동을 고객에게, 긍지를 사원에게, 가치를 사회에</h2>
+                        <p>(주)제주종합관리는 건물종합관리 전문기업으로서 공동주택 및 빌딩 관리, 시설관리, 입주관리, 임대관리 등 토탈 매니지먼트 서비스를 제공하고 있습니다.</p>
+                        <p>풍부한 경험과 전문 인력을 바탕으로 고객의 소중한 자산을 최상의 상태로 관리하며, 입주민의 편리하고 쾌적한 생활환경을 조성하기 위해 최선을 다하고 있습니다.</p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">관리현장</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">6+</span>
+                                <span class="stat-label">사업분야</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">고객만족</span>
+                            </div>
+                        </div>
+                        <a th:href="@{/company}" class="btn-primary">자세히 보기</a>
+                    </div>
+                    <div class="about-image">
+                        <div class="about-image-placeholder">
+                            <i class="fas fa-city"></i>
+                            <span>건물종합관리 전문기업</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Areas -->
+        <section class="business-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>사업영역</h2>
+                    <p>전문적인 토탈 매니지먼트 서비스</p>
+                </div>
+                <div class="business-grid">
+                    <div class="business-item">
+                        <div class="business-icon"><i class="fas fa-building"></i></div>
+                        <h4>건물시설관리업</h4>
+                    </div>
+                    <div class="business-item">
+                        <div class="business-icon"><i class="fas fa-home"></i></div>
+                        <h4>공동주택 및 빌딩 관리업</h4>
+                    </div>
+                    <div class="business-item">
+                        <div class="business-icon"><i class="fas fa-key"></i></div>
+                        <h4>입주 및 임대관리</h4>
+                    </div>
+                    <div class="business-item">
+                        <div class="business-icon"><i class="fas fa-spray-can"></i></div>
+                        <h4>건물위생관리 및 소독업</h4>
+                    </div>
+                    <div class="business-item">
+                        <div class="business-icon"><i class="fas fa-broom"></i></div>
+                        <h4>청소업 및 저수조 청소업</h4>
+                    </div>
+                    <div class="business-item">
+                        <div class="business-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h4>경비파견업 및 인력파견업</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>건물관리 전문 상담</h2>
+                    <p>건물종합관리에 관한 문의사항이 있으시면 언제든지 연락 주세요.</p>
+                    <div class="cta-contacts">
+                        <a href="tel:15332849" class="cta-phone">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>1533-2849</span>
+                        </a>
+                        <a th:href="@{/contact}" class="btn-cta">견적 문의하기</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Info Section -->
+        <section class="contact-info-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-box">
+                        <h3><i class="fas fa-map-marker-alt"></i> 본사</h3>
+                        <p>제주특별자치도 서귀포시 대정읍 신영로 5, 101</p>
+                        <p><strong>TEL:</strong> 1533-2849 / 064-792-6670</p>
+                        <p><strong>FAX:</strong> 064-792-6671</p>
+                        <p><strong>E-mail:</strong> jtm6670@naver.com</p>
+                    </div>
+                    <div class="contact-box">
+                        <h3><i class="fas fa-map-marker-alt"></i> 경기사무소</h3>
+                        <p>경기도 하남시 상산곡동 502-8</p>
+                        <p><strong>TEL:</strong> 031-764-9067</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

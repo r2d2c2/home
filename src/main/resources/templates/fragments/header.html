@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="header" class="site-header">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-inner">
+                <div class="top-bar-left">
+                    <span class="top-info"><i class="fas fa-phone-alt"></i> 1533-2849</span>
+                    <span class="top-info"><i class="fas fa-envelope"></i> jtm6670@naver.com</span>
+                </div>
+                <div class="top-bar-right">
+                    <span class="top-info"><i class="fas fa-clock"></i> 평일 09:00 ~ 18:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <div class="main-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a th:href="@{/}">
+                        <span class="logo-text">(주)제주종합관리</span>
+                    </a>
+                </div>
+                <nav class="main-nav" id="mainNav">
+                    <ul class="nav-menu">
+                        <li class="nav-item has-submenu">
+                            <a href="#" class="nav-link">회사소개</a>
+                            <ul class="submenu">
+                                <li><a th:href="@{/company/greeting}">인사말</a></li>
+                                <li><a th:href="@{/company}">회사개요</a></li>
+                                <li><a th:href="@{/company/organization}">조직도</a></li>
+                                <li><a th:href="@{/company/directions}">오시는길</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-submenu">
+                            <a th:href="@{/business}" class="nav-link">사업소개</a>
+                            <ul class="submenu">
+                                <li><a href="/business#building">건물종합관리</a></li>
+                                <li><a href="/business#facility">시설관리</a></li>
+                                <li><a href="/business#movein">입주관리</a></li>
+                                <li><a href="/business#rental">임대관리</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a th:href="@{/projects}" class="nav-link">주요실적</a>
+                        </li>
+                        <li class="nav-item">
+                            <a th:href="@{/process}" class="nav-link">진행절차</a>
+                        </li>
+                        <li class="nav-item">
+                            <a th:href="@{/contact}" class="nav-link btn-contact">문의하기</a>
+                        </li>
+                    </ul>
+                </nav>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="메뉴 열기">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <ul class="mobile-nav">
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link has-sub">회사소개 <i class="fas fa-chevron-down"></i></a>
+                    <ul class="mobile-submenu">
+                        <li><a th:href="@{/company/greeting}">인사말</a></li>
+                        <li><a th:href="@{/company}">회사개요</a></li>
+                        <li><a th:href="@{/company/organization}">조직도</a></li>
+                        <li><a th:href="@{/company/directions}">오시는길</a></li>
+                    </ul>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link has-sub">사업소개 <i class="fas fa-chevron-down"></i></a>
+                    <ul class="mobile-submenu">
+                        <li><a href="/business#building">건물종합관리</a></li>
+                        <li><a href="/business#facility">시설관리</a></li>
+                        <li><a href="/business#movein">입주관리</a></li>
+                        <li><a href="/business#rental">임대관리</a></li>
+                    </ul>
+                </li>
+                <li class="mobile-nav-item">
+                    <a th:href="@{/projects}" class="mobile-nav-link">주요실적</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a th:href="@{/process}" class="mobile-nav-link">진행절차</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a th:href="@{/contact}" class="mobile-nav-link">문의하기</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+</body>
+</html>
