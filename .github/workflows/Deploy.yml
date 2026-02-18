@@ -49,12 +49,11 @@ jobs:
           echo "⏳ 앱 기동 대기 중..."
           for i in {1..15}; do
             sleep 2
-            if curl -sf http://localhost:9090/actuator/health > /dev/null 2>&1; then
-              echo "✅ 배포 성공! (${i}번째 시도)"
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:9090/actuator/health)
+            echo "  HTTP 상태코드: $STATUS ($i/15)"   # ← 실제 뭘 받는지 확인
+            if [ "$STATUS" = "200" ]; then
+              echo "✅ 배포 성공!"
               exit 0
             fi
-            echo "  대기 중... ($i/15)"
           done
-          echo "❌ 헬스체크 실패 - 로그 확인:"
-          tail -50 "$HOME/app/app.log"
           exit 1
