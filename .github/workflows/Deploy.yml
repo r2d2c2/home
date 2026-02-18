@@ -1,4 +1,5 @@
 name: Deploy to Ubuntu Server
+
 on:
   push:
     branches:
@@ -7,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -15,52 +17,61 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '25'
+          java-version: '21'          # 25 EA 쓰려면 zulu + '25-ea'
+          cache: 'gradle'             # 캐시 여기서 한번에 처리
+
+      - name: Grant execute permission
+        run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: bash ./gradlew build
+        run: ./gradlew build -x test  # CI에서 테스트 별도 관리하거나 DB 없으면 스킵
 
-      - name: Deploy JAR to Ubuntu Server
+      - name: Deploy JAR
         run: |
           APP_DIR="$HOME/app"
-          
-          # 배포 디렉토리 생성
           mkdir -p "$APP_DIR"
-          echo "✓ 배포 디렉토리 확인: $APP_DIR"
-          
+
           # JAR 파일 검색
           JAR_FILE=$(ls -1 build/libs/*.jar | grep -v plain | head -1)
-          
           if [ -z "$JAR_FILE" ]; then
-            echo "❌ 오류: build/libs에서 JAR 파일을 찾을 수 없습니다"
+            echo "❌ JAR 파일을 찾을 수 없습니다"
             exit 1
           fi
-          
-          JAR_NAME=$(basename "$JAR_FILE")
-          echo "✓ JAR 파일 찾음: $JAR_NAME"
-          
-          # 기존 프로세스 중지
-          echo "⏹️  기존 프로세스 중지 중..."
-          pkill -f "home.jar" || true
-          sleep 2
-          
-          # JAR 파일 복사
-          echo "📦 JAR 파일 복사 중..."
+          echo "✓ JAR 파일: $(basename $JAR_FILE)"
+
+          # 기존 프로세스 종료 후 확인
+          if pgrep -f "home.jar" > /dev/null; then
+            echo "⏹️  기존 프로세스 종료 중..."
+            pkill -f "home.jar"
+            # 포트 완전히 해제될 때까지 대기
+            for i in {1..10}; do
+              pgrep -f "home.jar" > /dev/null || break
+              echo "  대기 중... ($i/10)"
+              sleep 1
+            done
+          fi
+
+          # JAR 배포
           cp "$JAR_FILE" "$APP_DIR/home.jar"
-          chmod +x "$APP_DIR/home.jar"
-          echo "✓ 복사 완료: $APP_DIR/home.jar"
-          
-          # 애플리케이션 백그라운드 실행
-          echo "🚀 애플리케이션 시작..."
-          nohup java -jar "$APP_DIR/home.jar" > "$APP_DIR/app.log" 2>&1 &
-          
-          sleep 3
-          echo ""
-          echo "=========================================="
-          echo "✓ 배포 완료!"
-          echo "=========================================="
-          echo "앱 실행 위치: $APP_DIR/home.jar"
-          echo "로그 위치: $APP_DIR/app.log"
-          echo "로그 확인: tail -f $APP_DIR/app.log"
-          echo "프로세스 확인: ps aux | grep home.jar"
-          echo ""
+          echo "✓ JAR 복사 완료"
+
+          # 백그라운드 실행
+          nohup java -jar "$APP_DIR/home.jar" \
+            > "$APP_DIR/app.log" 2>&1 &
+          echo $! > "$APP_DIR/app.pid"   # PID 저장 (나중에 종료할 때 유용)
+          echo "🚀 PID: $(cat $APP_DIR/app.pid)"
+
+      - name: Health Check
+        run: |
+          echo "⏳ 앱 기동 대기 중..."
+          for i in {1..15}; do
+            sleep 2
+            if curl -sf http://localhost:8080/actuator/health > /dev/null 2>&1; then
+              echo "✅ 배포 성공! (${i}번째 시도)"
+              exit 0
+            fi
+            echo "  대기 중... ($i/15)"
+          done
+          echo "❌ 헬스체크 실패 - 로그 확인:"
+          tail -50 "$HOME/app/app.log"
+          exit 1
