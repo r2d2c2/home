@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '21'          # 25 EA 쓰려면 zulu + '25-ea'
+          java-version: '25-ea'          # 25 EA 쓰려면 zulu + '25-ea'
           cache: 'gradle'             # 캐시 여기서 한번에 처리
 
       - name: Grant execute permission
