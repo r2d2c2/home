@@ -57,7 +57,7 @@ public class HomeController {
 
     @GetMapping("/contact")
     public String contact(Model model) {
-        model.addAttribute("pageTitle", "문의하기 - (주) 제주종합관리");
+        model.addAttribute("pageTitle", "문의하기 - (주)제주종합관리");
         return "contact";
     }
 }
