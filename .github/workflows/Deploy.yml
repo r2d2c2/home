@@ -40,8 +40,7 @@ jobs:
           cp "$JAR_FILE" "$APP_DIR/home.jar"
           echo "✓ JAR 복사 완료"
 
-          # systemctl로 재시작 (sudo 권한 필요)
-          sudo systemctl restart home
+          sudo systemctl restart home   # ← nohup 대신 이걸로
           echo "🚀 서비스 재시작 완료"
 
       - name: Health Check
