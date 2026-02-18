@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: home
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 9090
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health   # health만 외부 노출
+  endpoint:
+    health:
+      show-details: never  # 상세 정보 숨김
+  security:
+    enabled: false
