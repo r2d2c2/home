@@ -13,5 +13,5 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '25'
-      - run: ./gradlew build
+      - run: bash ./gradlew build
       - run: sudo systemctl restart home
