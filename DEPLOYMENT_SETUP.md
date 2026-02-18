@@ -93,7 +93,53 @@ mkdir -p ~/app
 
 ## 배포 방법
 
-### GitHub에서 배포
+### 1. Windows 로컬에서 즉시 배포
+
+**PowerShell에서 다음 스크립트 실행:**
+
+```powershell
+$appDir = "$HOME/app"
+if (!(Test-Path $appDir)) {
+    New-Item -ItemType Directory -Path $appDir -Force | Out-Null
+    Write-Host "Created directory: $appDir"
+}
+
+$jarFile = Get-ChildItem -Path "build/libs" -Filter "*.jar" | Where-Object { $_.Name -notlike "*plain*" } | Select-Object -First 1
+
+if ($null -ne $jarFile) {
+    Write-Host "Found JAR: $($jarFile.Name)"
+    Write-Host "Stopping existing process..."
+    
+    $javaProcesses = Get-Process -Name "java" -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -like "*home.jar*" }
+    if ($null -ne $javaProcesses) {
+        $javaProcesses | Stop-Process -Force -ErrorAction SilentlyContinue
+        Start-Sleep -Seconds 2
+        Write-Host "Process stopped"
+    }
+    
+    Write-Host "Copying JAR: $($jarFile.Name)"
+    Copy-Item -Path $jarFile.FullName -Destination "$appDir/home.jar" -Force
+    
+    Write-Host "Starting application..."
+    Start-Process java -ArgumentList "-jar", "$appDir/home.jar"
+    Start-Sleep -Seconds 3
+    Write-Host "✓ Deployment completed!"
+}
+else {
+    Write-Error "No JAR file found in build/libs"
+    exit 1
+}
+```
+
+**실행 방법:**
+1. PowerShell 관리자 권한으로 실행
+2. 프로젝트 디렉토리로 이동: `cd C:\Users\uy680\IdeaProjects\home`
+3. 먼저 빌드: `.\gradlew build`
+4. 위 스크립트 복사 & 붙여넣기 또는 파일로 저장 후 실행
+
+---
+
+### 2. GitHub Actions를 통한 자동 배포 (Linux 서버)
 
 1. 로컬에서 코드 수정
 2. `main` 브랜치에 커밋 및 push:
