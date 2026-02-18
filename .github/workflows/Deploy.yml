@@ -13,5 +13,29 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '25'
-      - run: bash ./gradlew build
-      - run: sudo systemctl restart home
+      - name: Build with Gradle
+        run: bash ./gradlew build
+      - name: Deploy JAR
+        run: |
+          $appDir = "$HOME/app"
+          if (!(Test-Path $appDir)) {
+            New-Item -ItemType Directory -Path $appDir -Force | Out-Null
+          }
+          
+          $jarFile = Get-ChildItem -Path "build/libs" -Filter "*.jar" -Not -Filter "*-plain.jar" | Select-Object -First 1
+          if ($jarFile) {
+            Write-Host "Stopping existing process..."
+            Get-Process -Name "java" -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -like "*home.jar*" } | Stop-Process -Force -ErrorAction SilentlyContinue
+            Start-Sleep -Seconds 2
+            
+            Write-Host "Copying JAR: $($jarFile.Name)"
+            Copy-Item -Path $jarFile.FullName -Destination "$appDir/home.jar" -Force
+            
+            Write-Host "Starting application..."
+            Start-Process java -ArgumentList "-jar", "$appDir/home.jar" -NoNewWindow
+            Write-Host "Deployment completed!"
+          } else {
+            Write-Error "No JAR file found in build/libs"
+            exit 1
+          }
+        shell: pwsh
