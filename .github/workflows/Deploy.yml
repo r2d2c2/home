@@ -31,35 +31,18 @@ jobs:
           APP_DIR="$HOME/app"
           mkdir -p "$APP_DIR"
 
-          # JAR 파일 검색
           JAR_FILE=$(ls -1 build/libs/*.jar | grep -v plain | head -1)
           if [ -z "$JAR_FILE" ]; then
             echo "❌ JAR 파일을 찾을 수 없습니다"
             exit 1
           fi
-          echo "✓ JAR 파일: $(basename $JAR_FILE)"
 
-          # 기존 프로세스 종료 후 확인
-          if pgrep -f "home.jar" > /dev/null; then
-            echo "⏹️  기존 프로세스 종료 중..."
-            pkill -f "home.jar"
-            # 포트 완전히 해제될 때까지 대기
-            for i in {1..10}; do
-              pgrep -f "home.jar" > /dev/null || break
-              echo "  대기 중... ($i/10)"
-              sleep 1
-            done
-          fi
-
-          # JAR 배포
           cp "$JAR_FILE" "$APP_DIR/home.jar"
           echo "✓ JAR 복사 완료"
 
-          # 백그라운드 실행
-          nohup java -jar "$APP_DIR/home.jar" \
-            > "$APP_DIR/app.log" 2>&1 &
-          echo $! > "$APP_DIR/app.pid"   # PID 저장 (나중에 종료할 때 유용)
-          echo "🚀 PID: $(cat $APP_DIR/app.pid)"
+          # systemctl로 재시작 (sudo 권한 필요)
+          sudo systemctl restart home
+          echo "🚀 서비스 재시작 완료"
 
       - name: Health Check
         run: |
