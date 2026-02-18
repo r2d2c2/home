@@ -78,40 +78,22 @@ mkdir -p ~/app
 
 ### 현재 권장 설정: 옵션 1 (Root 권한 없음)
 
-**Deploy.yml 수정:**
-
-### 배포 프로세스
+**자동 배포 프로세스:**
 
 1. 로컬에서 코드 수정 후 `main` 브랜치에 push
 2. GitHub Actions가 자동으로:
    - 코드 체크아웃
    - Java 25 설치
-   - Gradle build 실행
-   - 빌드된 JAR를 `/home/app/home.jar`로 복사
-   - `home` 서비스 재시작
+   - Gradle build 실행 (`./gradlew build`)
+   - 빌드된 JAR 파일 검색
+   - 기존 Java 프로세스 중지 (있으면)
+   - JAR 파일을 `~/app/home.jar`로 복사
+   - 새 JAR 시작
 
-### 배포 상태 확인
+**배포 후 앱 확인:**
 
 ```bash
-# 서비스 상태 확인
-sudo systemctl status home
-
-# 서비스 로그 확인
-sudo journalctl -u home -f
+# 포트 확인 (기본값: 9090)
+curl http://localhost:9090
 ```
-
-### 문제 해결
-
-**JAR 파일이 복사되지 않는 경우:**
-- `/home/app` 디렉토리 권한 확인
-- runner 사용자 권한 확인
-
-**서비스 재시작 실패:**
-- sudoers 설정 재확인
-- `sudo systemctl restart home` 수동 실행 테스트
-
-**배포 후 앱이 시작되지 않는 경우:**
-- `sudo journalctl -u home -f`로 로그 확인
-- Java 25 설치 확인
-- 포트 충돌 확인 (기본값: 9090)
 

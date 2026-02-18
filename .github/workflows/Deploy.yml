@@ -20,21 +20,31 @@ jobs:
           $appDir = "$HOME/app"
           if (!(Test-Path $appDir)) {
             New-Item -ItemType Directory -Path $appDir -Force | Out-Null
+            Write-Host "Created directory: $appDir"
           }
           
-          $jarFile = Get-ChildItem -Path "build/libs" -Filter "*.jar" -Not -Filter "*-plain.jar" | Select-Object -First 1
-          if ($jarFile) {
+          $jarFile = Get-ChildItem -Path "build/libs" -Filter "*.jar" | Where-Object { $_.Name -notlike "*plain*" } | Select-Object -First 1
+          
+          if ($null -ne $jarFile) {
+            Write-Host "Found JAR: $($jarFile.Name)"
             Write-Host "Stopping existing process..."
-            Get-Process -Name "java" -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -like "*home.jar*" } | Stop-Process -Force -ErrorAction SilentlyContinue
-            Start-Sleep -Seconds 2
+            
+            $javaProcesses = Get-Process -Name "java" -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -like "*home.jar*" }
+            if ($null -ne $javaProcesses) {
+              $javaProcesses | Stop-Process -Force -ErrorAction SilentlyContinue
+              Start-Sleep -Seconds 2
+              Write-Host "Process stopped"
+            }
             
             Write-Host "Copying JAR: $($jarFile.Name)"
             Copy-Item -Path $jarFile.FullName -Destination "$appDir/home.jar" -Force
             
             Write-Host "Starting application..."
-            Start-Process java -ArgumentList "-jar", "$appDir/home.jar" -NoNewWindow
-            Write-Host "Deployment completed!"
-          } else {
+            Start-Process java -ArgumentList "-jar", "$appDir/home.jar"
+            Start-Sleep -Seconds 3
+            Write-Host "✓ Deployment completed!"
+          }
+          else {
             Write-Error "No JAR file found in build/libs"
             exit 1
           }
