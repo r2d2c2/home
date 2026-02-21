@@ -15,7 +15,7 @@ public class HomeController {
 
     @GetMapping("/company")
     public String company(Model model) {
-        model.addAttribute("pageTitle", "회사소개 - (주)제주종합관리");
+        model.addAttribute("pageTitle", "회사소개 -  (주)제주종합관리");
         return "company";
     }
 
