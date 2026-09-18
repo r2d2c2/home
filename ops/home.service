@@ -1,0 +1,23 @@
+[Unit]
+Description=Home Spring Boot application
+After=network.target
+
+[Service]
+Type=simple
+User=home-app
+Group=home-app
+WorkingDirectory=/var/lib/home-app
+ExecStart=/usr/bin/java -jar /opt/home-app/home.jar
+Environment=SERVER_PORT=9090
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+SuccessExitStatus=143
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/home-app
+
+[Install]
+WantedBy=multi-user.target
